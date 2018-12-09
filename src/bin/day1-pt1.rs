@@ -1,19 +1,14 @@
-use std::io;
-use std::io::prelude::*;
-use std::io::BufReader;
-use std::fs::File;
+extern crate AdventOfCode2018;
+use AdventOfCode2018::Lines;
 
 fn parse_int(b : String) -> i32 {
     b.parse().unwrap()
 }
 
-fn main() -> io::Result<()> {
-    let f = File::open("./inputs/day1/part1.txt")?;
-    let reader = BufReader::new(f);
+fn main() {
+    let f = Lines::new("./inputs/day1/part1.txt").unwrap();
 
-    let sum = reader.lines().fold(0, |a, b| a + parse_int(b.unwrap()));
+    let sum = f.fold(0, |a, b| a + parse_int(b.unwrap()));
 
     println!("{}\n", sum);
-
-    Ok(())
 }
